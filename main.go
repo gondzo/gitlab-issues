@@ -10,6 +10,8 @@ import (
 	"strings"
 	"text/tabwriter"
 	"github.com/JensRantil/go-csv"
+	
+	"github.com/xanzy/go-gitlab"
 )
 
 func main() {
@@ -86,7 +88,7 @@ func main() {
 
 	if *outputCSV {
 		f, err := os.Create("output.csv")
-		w := NewWriter(f)
+		w := csv.NewWriter(f)
 		
 		w.Write(headers)
 		for _, issue := range allIssues {
