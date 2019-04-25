@@ -83,7 +83,7 @@ func main() {
 		}
 	}
 
-	headers := []string{"ID", "State", "Labels", "Description"}
+	headers := []string{"ID", "State", "Labels", "Title", "Description"}
 	fmt.Printf("found %d issues\n", len(allIssues))
 
 	if *outputCSV {
@@ -106,7 +106,7 @@ func main() {
 }
 
 func fieldsFrom(issue *gitlab.Issue) []string {
-	return []string{strconv.Itoa(issue.IID), issue.State, strings.Join(issue.Labels, ","), issue.Title}
+	return []string{strconv.Itoa(issue.IID), issue.State, strings.Join(issue.Labels, ","), issue.Title, issue.Description}
 }
 
 // filterOutLabels removes issues that have are marked with a label
