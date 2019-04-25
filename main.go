@@ -10,8 +10,6 @@ import (
 	"strconv"
 	"strings"
 	"text/tabwriter"
-	"JensRantil/go-csv"
-
 	"github.com/JensRantil/go-csv"
 )
 
