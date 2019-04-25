@@ -87,7 +87,12 @@ func main() {
 	fmt.Printf("found %d issues\n", len(allIssues))
 
 	if *outputCSV {
-		f, _ := os.Create("output.csv")
+		f, err := os.Create("output.csv")
+		checkError(err)
+		defer func() {
+		  err := f.Close()
+		  checkError(err)
+		}
 		w := csv.NewWriter(f)
 		
 		w.Write(headers)
