@@ -62,7 +62,7 @@ func main() {
 			os.Exit(1)
 		}
 
-		maxPages = rsp.LastPage
+		maxPages = rsp.TotalPages
 		allIssues = append(allIssues, issues...)
 	}
 
