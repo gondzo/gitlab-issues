@@ -36,7 +36,7 @@ func main() {
 		*baseURL = *baseURL + "/"
 	}
 
-	git.SetBaseURL(*baseURL + "api/v3")
+	git.SetBaseURL(*baseURL + "api/v4")
 
 	// setup list filtering options
 	opts := &gitlab.ListProjectIssuesOptions{}
