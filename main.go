@@ -10,8 +10,9 @@ import (
 	"strconv"
 	"strings"
 	"text/tabwriter"
+	"JensRantil/go-csv"
 
-	"github.com/xanzy/go-gitlab"
+	"github.com/JensRantil/go-csv"
 )
 
 func main() {
@@ -87,13 +88,14 @@ func main() {
 	fmt.Printf("found %d issues\n", len(allIssues))
 
 	if *outputCSV {
-		cw := csv.NewWriter(of)
-		defer cw.Flush()
-
-		cw.Write(headers)
+		f, err := os.Create("output.csv")
+		w := NewWriter(f)
+		
+		w.Write(headers)
 		for _, issue := range allIssues {
-			cw.Write(fieldsFrom(issue))
+			w.Write(fieldsFrom(issue))
 		}
+		w.Flush()
 	} else {
 		tw := tabwriter.NewWriter(of, 4, 4, 2, ' ', 0)
 		defer tw.Flush()
